@@ -1,3 +1,8 @@
+
+router.get("/profile", isLoggedIn, (req, res) => {
+    res.render("profile");
+});
+
 module.exports = {
     
     isLoggedIn(req, res, next) {
