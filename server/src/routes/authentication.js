@@ -40,6 +40,8 @@ router.post('/change-password', isLoggedIn, async (req, res) => {
         req.flash('success', 'Contraseña actualizada correctamente');
         res.redirect('/profile')
     }
-})
+});
+
+app.use(passport.session())
 
 module.exports = router;
