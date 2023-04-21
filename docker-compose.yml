@@ -12,7 +12,7 @@ services:
     build: ./server
     environment:
       DATABASE: test_database
-      USER: root
+      MYSQL_USER: root
       PASSWORD: itesm
       HOST: mysql-database
     ports:
