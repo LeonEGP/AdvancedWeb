@@ -10,13 +10,15 @@ services:
     restart: always
   web-nodejs:
     build: ./server
+    volumes:
+      - ${PWD}/server/:/app
     environment:
       DATABASE: test_database
       MYSQL_USER: root
       PASSWORD: itesm
       HOST: mysql-database
     ports:
-      - "3000:3000"
+      - "4000:4000"
     depends_on:
       - mysql-database
     restart: on-failure

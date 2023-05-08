@@ -57,8 +57,11 @@ CREATE TABLE `user` (
 -- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`) VALUES
-(1, 'ivan', '$2a$10$W4NlOWOb0OBJhMAox9J.PuxdBFdg9uzdM4JPI0TcRGAfrMRYDCGlS');
+-- INSERT INTO `user` (`id`, `username`, `password`) VALUES
+-- (1, 'ivan', '$2a$10$W4NlOWOb0OBJhMAox9J.PuxdBFdg9uzdM4JPI0TcRGAfrMRYDCGlS');
+
+-- INSERT INTO `user` (`id`, `username`, `password`) VALUES
+-- (1, 'juan', '1234');
 
 --
 -- Índices para tablas volcadas

@@ -1,15 +1,14 @@
 
-router.get("/profile", isLoggedIn, (req, res) => {
-    res.render("profile");
-});
+
 
 module.exports = {
     
     isLoggedIn(req, res, next) {
+        console.log(req)
         if (req.isAuthenticated()) {
             return next();
         } else {
-            res.redirect('/signin');
+            res.redirect('/login');
         }
     },
 
@@ -17,7 +16,7 @@ module.exports = {
         if (!req.isAuthenticated()) {
             return next();
         } else {
-            res.redirect('/profile');
+            res.redirect('/characters');
         }
     }
 

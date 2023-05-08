@@ -3,7 +3,7 @@ const axios = require('axios');
 const router = express.Router()
 const { isLoggedIn } = require('../lib/auth');
 
-router.get('/', async (req, res) => {
+router.get('/characters', async (req, res) => {
     const a = "Hello World"
 
     const END_POINT = "https://rickandmortyapi.com/api/character"
@@ -24,4 +24,8 @@ router.get('/', async (req, res) => {
         });
 })
 
+router.get('/', async (req, res) => {
+
+    res.redirect('login');
+});
 module.exports = router

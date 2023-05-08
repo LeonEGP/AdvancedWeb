@@ -9,13 +9,25 @@ const pool = require('../database');
 router.get('/signin', isNotLoggedIn, (req, res) => {
     res.render('auth/signin')
 })
+router.get('/login', isNotLoggedIn, (req, res) => {
+    res.render('auth/login')
+})
 
 router.post('/signin', isNotLoggedIn, (req, res, next) => {
     passport.authenticate('local.signin', {
-        successRedirect: '/profile',
-        failureRedirect: '/signin',
+        successRedirect: '/characters',
+        failureRedirect: '/login',
         failureFlash: true
     })(req, res, next)
+    // res.json({"success": "true"})
+})
+router.post('/login', isNotLoggedIn, (req, res, next) => {
+    passport.authenticate('local.login', {
+        successRedirect: '/characters',
+        failureRedirect: '/login',
+        failureFlash: true
+    })(req, res, next)
+    // res.json({"success": "true"})
 })
 
 router.get('/profile', isLoggedIn, (req, res) => {
@@ -36,12 +48,12 @@ router.post('/change-password', isLoggedIn, async (req, res) => {
         const newUser = {
             password: await encryptPassword(newPassword)
         }
-        await pool.query('UPDATE User set ? WHERE id = ?', [newUser, req.user.id])
+        await pool.query('UPDATE user set ? WHERE id = ?', [newUser, req.user.id])
         req.flash('success', 'Contraseña actualizada correctamente');
         res.redirect('/profile')
     }
 });
 
-app.use(passport.session())
+
 
 module.exports = router;
